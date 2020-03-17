@@ -1,9 +1,18 @@
 /*
-Theme Name: hsblog
-Theme URI: https://hsblog.com/
-Description: hsblog
-Author: Wiloke team
-Author URI: https://hsblog.com/
-Template: hsblog
-Version: 0.1
+Theme Name: Tikidocs Child
+Theme URI: https://tikidocs.modeltheme.com/
+Template: tikidocs
+Author: ModelTheme
+Author URI: http://modeltheme.com/
+Description: Knowledgebase & Support Forum WordPress Theme
+Version: 1.0
+Text Domain: tikidocs
+Tags: fluid-layout, custom-header, custom-menu, featured-images, post-formats, sticky-post
 */
+
+/* =Theme customization starts here
+------------------------------------------------------- */
+
+.hsblog-private-ticket {
+    border: 3px solid red !important;
+}

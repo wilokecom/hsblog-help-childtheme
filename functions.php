@@ -1,11 +1,16 @@
 <?php
-add_action( 'wp_enqueue_scripts', 'my_enqueue_assets' );
+require_once get_stylesheet_directory() . '/vendor/autoload.php';
 
-function my_enqueue_assets()
-{
-    wp_enqueue_style( 'parent-style', get_template_directory_uri().'/style.css' );
+define('TIKIDOCS_CHILD_VERSION', '1.0');
+
+\TikiDocsChild\Helpers\App::build('app', include get_stylesheet_directory() . '/config/app.php');
+if (!is_admin()) {
+    new \TikiDocsChild\Controllers\EnqueueControllerScripts();
+    new \TikiDocsChild\Controllers\RegisterTicketStatusController();
+} else {
+    new \TikiDocsChild\Controllers\ThemeOptionController();
 }
 
-
-include get_stylesheet_directory().'/app/Controllers/PrivateCheckController.php';
-new PrivateCheckController;
+new \TikiDocsChild\Controllers\ModifyPrivateTicketQuery();
+new \TikiDocsChild\Controllers\SingleTicketController();
+new \TikiDocsChild\Controllers\TopicCountController();
