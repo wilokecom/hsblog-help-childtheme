@@ -40,4 +40,14 @@ class TicketHelper
 
         return $additionalClasses;
     }
+
+    public static function canChangeTicketStatus()
+    {
+        return current_user_can('administrator') || (!self::isTicketClosedForever() && bbp_get_topic_author_id() == get_current_user_id());
+    }
+
+    public static function isTicketClosedForever()
+    {
+        return get_post_meta(bbp_get_topic_id(), '_bbp_status', true) === 'close_forever';
+    }
 }
